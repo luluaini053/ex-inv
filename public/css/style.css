@@ -1,0 +1,49 @@
+.main{
+    height: 100vh;
+}
+.sidebar{
+    background: #749BC2;
+    color: #fff;
+}
+.sidebar a{
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 20px 20px;
+}
+.sidebar a:hover{
+    background: #91C8E4;
+}
+.active{
+    background: #4682A9;
+    border-right: solid 10px #393646;
+}
+
+.card-data{
+    border: solid 1px;
+    padding: 20px 30px;
+    color: black;
+}
+
+.card-data.inventory{
+    background-color: #D7C0AE;
+}
+
+.card-data.category{
+    background-color: #8294C4;
+}
+
+.card-data.user{
+    background-color: #62B6B7;
+}
+.card-data i{
+    font-size: 80px;
+}
+
+.card-desc{
+    font-size: 25px;
+}
+
+.card-qty{
+    font-size: 30px;
+}
