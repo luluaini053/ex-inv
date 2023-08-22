@@ -43,6 +43,7 @@ class InvReturnController extends Controller
             // Memperbarui status inventaris menjadi 'in stock'
             $inv = Inv::findOrFail($request->inv_id);
             $inv->status = 'in stock';
+            $inv->stock += $request->stock; // tambah kembali jumlah stock yang dipinjam
             $inv->save();
 
             DB::commit();
