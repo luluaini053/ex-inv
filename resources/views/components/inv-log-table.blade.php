@@ -4,6 +4,7 @@
             <tr>
                 <th>No.</th>
                 <th>User</th>
+                <th>Division</th>
                 <th>Item</th>
                 <th>Qty</th>
                 <th>Rent Date</th>
@@ -15,7 +16,8 @@
             @foreach ($invlog as $item)
             <tr class="{{ $item->actual_return_date == null ? '' : ($item->return_date < $item->actual_return_date ? 'text-bg-danger'  : 'text-bg-success') }}">
                 <td>{{$loop->iteration}}</td>
-                <td>{{$item->user->username}}</td>
+                <td>{{$item->user->username }}</td>
+                <td>{{$item->user->divisi }}</td>
                 <td>{{$item->inv->title}}</td>
                 <td>{{$item->inv->stock}}</td>
                 <td>{{$item->inv_date}}</td>

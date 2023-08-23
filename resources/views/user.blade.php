@@ -24,6 +24,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Username</th>
+                    <th>Division</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                 <tr>
                     <td>{{ $loop->iteration}}</td>
                     <td>{{ $item->username}}</td>
+                    <td>{{ $item->divisi}} </td>
                     <td>
                         <a href="/user-detail/{{$item->slug}}">Detail</a>
                         <a href="/user-banned/{{$item->slug}}">Ban User</a>

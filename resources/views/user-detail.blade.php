@@ -26,6 +26,10 @@
             <input type="text" class="form-control" readonly value="{{$user->username}}">
         </div>
         <div class="mb-3">
+            <label for="" class="form-label">Division</label>
+            <input type="text" class="form-control" readonly value="{{$user->divisi}}">
+        </div>
+        <div class="mb-3">
             <label for="" class="form-label">Status</label>
             <input type="text" class="form-control" readonly value="{{$user->status}}">
         </div>

@@ -67,10 +67,16 @@ class AuthController extends Controller
         $validate = $request->validate([
             'username' => 'required|unique:users|max:255',
             'password' => 'required|max:255',
+            'divisi' => 'required|max:255',
         ]);
 
         $request['password'] = Hash::make($request->password);
         $user = User::create($request->all());
+        $request['divisi'] = Str::upper($request->divisi);
+        //$divisi = strtoupper($divisi);
+        //if (strtoupper($divisi) !== $divisi) {
+        //    $fail('validation.uppercase')->translate();
+        //}
 
         Session::flash('status', 'success');
         Session::flash('message', 'Register Success. Wait admin for approval');

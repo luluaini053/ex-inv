@@ -37,7 +37,15 @@
                     @endforeach
                 </select>
             </div>
-
+            <div class="mb-3">
+                <label for="divisi" class="form-label">Division</label>
+                <select name="divisi" id="divisi" class="form-control inputinv">
+                    <option value="">Select Division</option>
+                    @foreach ($users as $item)
+                        <option value="{{$item->username}}">{{$item->divisi}}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="mb-3">
                 <label for="stock" class="form-label">Qty</label>
                 <input type="number" id="stock" name="stock" class="form-control" min='0'/>

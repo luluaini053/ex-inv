@@ -43,6 +43,8 @@ class InvReturnController extends Controller
             // Memperbarui status inventaris menjadi 'in stock'
             $inv = Inv::findOrFail($request->inv_id);
             $inv->status = 'in stock';
+            $inv->stock += $request->stock; //tambah kembali jumah stock yg dipinjam
+
             $inv->save();
 
             DB::commit();
@@ -54,7 +56,8 @@ class InvReturnController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
         }
-
+    }
+}
         //user dan inv yang dipilih untuk di return benar, maka berhasil return inv
         //user dan inv yang dipilih untuk di return salah, maka muncul error notice
         //$log = InvLogs::where('user_id', $request->user_id)->where('inv_id', $request->inv_id)->where('actual_return_date', null);
@@ -83,9 +86,9 @@ class InvReturnController extends Controller
         //$borrow = InvLogs::where('status', '=', 'not available')-get();
 
 
-    }
-    public function rentItem(Request $request)
-{
+//    }
+//    public function rentItem(Request $request)
+//{
     //$request->validate([
     //    'inv_id' => 'required', // Ensure you have the necessary validation rules
     //    'user_id' => 'required',
@@ -140,60 +143,60 @@ class InvReturnController extends Controller
     //        ->with('error', 'An error occurred while processing your request');
     //}
 
-        $rules = [
-            'inv_id' => 'required', // Add appropriate validation rules for inv_id
-            'user_id' => 'required', // Add appropriate validation rules for user_id
-        ];
+//        $rules = [
+//            'inv_id' => 'required', // Add appropriate validation rules for inv_id
+//            'user_id' => 'required', // Add appropriate validation rules for user_id
+//        ];
 
-        $this->validate($request, $rules);
+//        $this->validate($request, $rules);
 
-        try {
-            DB::beginTransaction();
+//        try {
+//            DB::beginTransaction();
 
-            $inv = Inv::findOrFail($request->inv_id);
+//            $inv = Inv::findOrFail($request->inv_id);
 
-            if ($inv->status == 'in stock') { // Change the condition
-                // Create a new record in the inv_logs table
-                $invLogData = [
-                    'inv_id' => $request->inv_id,
-                    'user_id' => $request->user_id,
-                    'inv_date' => Carbon::now()->toDateString(),
-                    'return_date' => Carbon::now()->addDay(3)->toDateString(),
-                ];
+//            if ($inv->status == 'in stock') { // Change the condition
+//                // Create a new record in the inv_logs table
+//                $invLogData = [
+//                    'inv_id' => $request->inv_id,
+//                    'user_id' => $request->user_id,
+//                    'inv_date' => Carbon::now()->toDateString(),
+//                    'return_date' => Carbon::now()->addDay(3)->toDateString(),
+//                ];
 
-                // Create a new record in the inv_logs table
-                InvLogs::create($invLogData);
+//                // Create a new record in the inv_logs table
+//                InvLogs::create($invLogData);
 
-                // Decrease the stock of the item
-                $inv->stock++;
+//                // Decrease the stock of the item
+//                $inv->stock++;
 
-                // Update the status based on the remaining stock
-                if ($inv->stock != 0) {
-                    $inv->status = 'in stock';
-                }
+//                // Update the status based on the remaining stock
+//                if ($inv->stock != 0) {
+//                    $inv->status = 'in stock';
+//                }
 
-                $inv->save();
+//                $inv->save();
 
-                DB::commit();
+//                DB::commit();
 
-                Session::flash('message', 'Rent Item Success');
-                Session::flash('alert-class', 'alert-success');
-                return redirect('inv-rent');
-            } else {
-                Session::flash('message', 'Cannot rent the item');
-                Session::flash('alert-class', 'alert-danger');
-                return redirect('inv-rent');
-            }
-        } catch (\Throwable $th) {
-            DB::rollBack();
+//                Session::flash('message', 'Rent Item Success');
+//                Session::flash('alert-class', 'alert-success');
+//                return redirect('inv-rent');
+//            } else {
+//                Session::flash('message', 'Cannot rent the item');
+//                Session::flash('alert-class', 'alert-danger');
+//                return redirect('inv-rent');
+//            }
+//        } catch (\Throwable $th) {
+//            DB::rollBack();
 
-            return redirect('inv-rent')
-                ->with('error', 'An error occurred while processing your request: ' . $th->getMessage());
-        }
+//            return redirect('inv-rent')
+//                ->with('error', 'An error occurred while processing your request: ' . $th->getMessage());
+//        }
 
-}
+//}
 
-}
+//}
 
 
         //$request['inv_date'] = Carbon::now()->toDateString();

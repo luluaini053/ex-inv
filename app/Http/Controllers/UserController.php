@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\InvLogs;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +25,8 @@ class UserController extends Controller
 
     public function registeredUser(){
         $registeredUser = User::where('status', 'inactive')->where('role_id', 2)->get();
-        return view('registered-user', ['registeredUsers' => $registeredUser]);
+        $divisi = Str::upper('divisi');
+        return view('registered-user', ['registeredUsers' => $registeredUser, 'divisi' => $divisi]);
     }
 
     public function show($slug){

@@ -154,7 +154,8 @@ class InvRentController extends Controller
             InvLogs::create($invLogData);
 
             // Decrease the stock of the item
-            $inv->stock--;
+            //$inv->stock--;
+            $inv->stock -= $request->stock;
 
             // Update the status based on the remaining stock
             if ($inv->stock == 0) {
