@@ -132,6 +132,13 @@ class InvRentController extends Controller
 
             $inv = Inv::findOrFail($request->inv_id);
 
+            if ($inv->stock - $request->stock < 0) {
+                // tolak peminjaman karena stock tidak cukup
+                Session::flash('message', 'item stock is not enough');
+                Session::flash('alert-class', 'alert-danger');
+                return redirect('inv-rent');
+            }
+
             if ($inv->status != 'in stock') {
                 Session::flash('message', 'Cannot rent the item');
                 Session::flash('alert-class', 'alert-danger');
@@ -158,8 +165,9 @@ class InvRentController extends Controller
             $inv->stock -= $request->stock;
 
             // Update the status based on the remaining stock
-            if ($inv->stock == 0) {
+            if ($inv->stock <= 0) {
                 $inv->status = 'not available';
+                $inv->stock = 0;
             }
 
             $inv->save();
