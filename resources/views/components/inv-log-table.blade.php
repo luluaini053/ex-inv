@@ -19,7 +19,7 @@
                 <td>{{$item->user->username }}</td>
                 <td>{{$item->user->divisi }}</td>
                 <td>{{$item->inv->title}}</td>
-                <td>{{$item->inv->stock}}</td>
+                <td>{{$item->stock}}</td>
                 <td>{{$item->inv_date}}</td>
                 <td>{{$item->return_date}}</td>
                 <td>{{$item->actual_return_date}}</td>

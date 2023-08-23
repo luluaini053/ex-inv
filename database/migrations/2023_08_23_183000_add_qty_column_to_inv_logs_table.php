@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('invs', function (Blueprint $table) {
-            $table->string('stock', 255)->after('slug');
+        Schema::table('inv_logs', function (Blueprint $table) {
+            $table->unsignedBigInteger('stock')->after('inv_date');
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('invs', function (Blueprint $table) {
+        Schema::table('inv_logs', function (Blueprint $table) {
             $table->dropColumn('stock');
         });
     }

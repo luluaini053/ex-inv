@@ -24,7 +24,7 @@
                 <select name="user_id" id="user" class="form-control inputinv">
                     <option value="">Select User</option>
                     @foreach ($users as $item)
-                        <option value="{{$item->id}}">{{$item->username}}</option>
+                        <option value="{{$item->id}}">{{$item->username}} | {{$item->divisi}}</option>
                     @endforeach
                 </select>
             </div>
@@ -37,7 +37,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="divisi" class="form-label">Division</label>
                 <select name="divisi" id="divisi" class="form-control inputinv">
                     <option value="">Select Division</option>
@@ -45,7 +45,7 @@
                         <option value="{{$item->username}}">{{$item->divisi}}</option>
                     @endforeach
                 </select>
-            </div>
+            </div> --}}
             <div class="mb-3">
                 <label for="stock" class="form-label">Qty</label>
                 <input type="number" id="stock" name="stock" class="form-control" min='0'/>
