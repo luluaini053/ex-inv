@@ -16,10 +16,10 @@
             @foreach ($invlog as $item)
             <tr class="{{ $item->actual_return_date == null ? '' : ($item->return_date < $item->actual_return_date ? 'text-bg-danger'  : 'text-bg-success') }}">
                 <td>{{$loop->iteration}}</td>
-                <td>{{$item->user->username }}</td>
-                <td>{{$item->user->divisi }}</td>
+                <td>{{$item->user->username ?? 'None'}}</td>
+                <td>{{$item->user->divisi ?? 'None'}}</td>
                 <td>{{$item->inv->title}}</td>
-                <td>{{$item->inv->stock}}</td>
+                <td>{{$item->stock}}</td>
                 <td>{{$item->inv_date}}</td>
                 <td>{{$item->return_date}}</td>
                 <td>{{$item->actual_return_date}}</td>

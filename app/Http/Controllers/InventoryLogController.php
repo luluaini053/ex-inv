@@ -13,3 +13,5 @@ class InventoryLogController extends Controller
         return view('inventoryLog', ['inv_log' => $invlog]);
     }
 }
+
+//masih kurang untuk menampilkan barang yang dikembalikan

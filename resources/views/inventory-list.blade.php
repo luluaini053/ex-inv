@@ -23,22 +23,28 @@
         </div>
     </form>
 
-    <div class="my-5" >
-        <div class="row">
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Item Name</th>
+                    <th>Qty</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($invs as $item)
+                <tr>
+                    <td>{{$item->inv_code}}</td>
+                    <td>{{$item->title}}</td>
+                    <td>{{$item->stock}}</td>
+                    <td>{{$item->status}}</td>
+                </tr>
 
-            @foreach ($invs as $item)
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$item->inv_code}}</h5>
-                            <p class="card-text">{{$item->title}}</p>
-                            <p class="card-text text-end">{{$item->stock}}</p>
-                            <p class="card-text text-end fw-bold {{$item->status == 'in stock' ? 'text-success' : 'text-danger'}}">
-                                {{$item->status}}</p>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </tbody>
+        </table>
     </div>
+
 @endsection

@@ -41,7 +41,6 @@
                                 <a href="/categories" @if(request()->route()->uri == 'categories' || request()->route()->uri == 'category-add' || request()->route()->uri == 'category-delete/{slug}' || request()->route()->uri == 'category-deleted' || request()->route()->uri == 'category-edit/{slug}') class='active' @endif>Categories</a>
                                 <a href="/users" @if(request()->route()->uri == 'users' || request()->route()->uri == 'registered-users' || request()->route()->uri == 'user-detail/{slug}' || request()->route()->uri == 'user-banned/{slug}' || request()->route()->uri == 'user-banned-list')class='active' @endif>Users</a>
                                 <a href="/inventoryLog" @if(request()->route()->uri == 'inventoryLog') class='active' @endif>Inventory Log</a>
-                                <a href="/inv-rent" @if(request()->route()->uri == 'inv-rent') class='active' @endif>Peminjaman Barang</a>
                                 <a href="/inv-return" @if(request()->route()->uri == 'inv-return') class='active' @endif>Pengembalian Barang</a>
                                 <a href="/logout" @if(request()->route()->uri == 'logout') class='active' @endif>LogOut</a>
                             @else
@@ -49,6 +48,7 @@
                                 <li>LogOut</li>--}}
                                 <a href="/profile" @if(request()->route()->uri == 'profile') class='active' @endif>Profile</a>
                                 <a href="/" @if(request()->route()->uri == '/') class='active' @endif>Inventory List</a>
+                                <a href="/inv-rent" @if(request()->route()->uri == 'inv-rent') class='active' @endif>Peminjaman Barang</a>
                                 <a href="/logout" @if(request()->route()->uri == 'logout') class='active' @endif>LogOut</a>
 
                             @endif

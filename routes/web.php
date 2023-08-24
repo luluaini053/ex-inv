@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('profile', [UserController::class, 'profile'])->middleware('client');
 
+    Route::get('inv-rent', [InvRentController::class, 'index'])->middleware('client');
+    Route::post('inv-rent', [InvRentController::class, 'store'])->middleware('client');
+
     Route::middleware('admin')->group(function (){
         Route::get('dashboard', [DashboardController::class, 'index']);
 
@@ -70,9 +73,6 @@ Route::middleware('auth')->group(function () {
         // Route::get('user-ban', [UserController::class, 'banUser']);
         Route::get('user-banned-list', [UserController::class, 'banUser']);
         Route::get('user-unbanned/{slug}', [UserController::class, 'unbanned']);
-
-        Route::get('inv-rent', [InvRentController::class, 'index']);
-        Route::post('inv-rent', [InvRentController::class, 'store']);
 
         Route::get('inventoryLog', [InventoryLogController::class, 'inventorylog']);
 
