@@ -22,7 +22,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr>
                             <td>IN-001</td>
                             <td>KNITTING</td>
@@ -35,7 +34,6 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-2">Add</button>
                             </td>
-
                         </tr>
                         <tr>
                             <td>IN-002</td>
@@ -48,9 +46,7 @@
                                     <input type="number" class="form-control" id="qty" placeholder="Password">
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-2">Add</button>
-
                             </td>
-
                         </tr>
                         <tr>
                             <td>IN-003</td>
@@ -64,20 +60,14 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-2">Add</button>
                             </td>
-
-
                         </tr>
-
-
                     </tbody>
                 </table>
-
             </div>
         </div>
         <div class="col-8">
             <div class="col-12 col-md-8 col-md offset-md-2 col-lg-6 offset-md-3">
                 <h1 class="mb-5">Pengembalian Barang</h1>
-
             <div class="mt-5">
                 @if (session('message'))
                 <div class="alert {{session('alert-class')}}">
@@ -100,12 +90,10 @@
                         <label for="user" class="form-label">User</label>
                         <input type="text" name="user" id="user" class="form-control">
                     </div>
-
                     <div class="mb-3">
                         <label for="stock" class="form-label">Qty</label>
                         <input type="number" id="stock" name="stock" class="form-control" min='0'/>
                     </div>
-
                     <div class="mb-3">
                         <label for="user" class="form-label">Kondisi barang</label>
                         <input type="text" name="user" id="user" class="form-control">
@@ -116,7 +104,6 @@
                 </form>
             </div>
         </div>
-
     </div>
 
 

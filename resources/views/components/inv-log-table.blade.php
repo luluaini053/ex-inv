@@ -10,6 +10,8 @@
                 <th>Rent Date</th>
                 <th>Return Date</th>
                 <th>Actual Return Date</th>
+                <th>Return Qty</th>
+                <th>Kondisi barang</th>
             </tr>
         </thead>
         <tbody>
@@ -18,11 +20,13 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->user->username ?? 'None'}}</td>
                 <td>{{$item->user->divisi ?? 'None'}}</td>
-                <td>{{$item->inv->title}}</td>
+                <td>{{$item->title}}</td>
                 <td>{{$item->stock}}</td>
                 <td>{{$item->inv_date}}</td>
                 <td>{{$item->return_date}}</td>
                 <td>{{$item->actual_return_date}}</td>
+                <td>{{$item->title}}</td>
+                <td>{{$item->stock}}</td>
             </tr>
 
             @endforeach

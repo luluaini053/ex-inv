@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvReturnController;
+use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\InventoryLogController;
 
 /*
@@ -62,6 +63,16 @@ Route::middleware('auth')->group(function () {
         Route::get('category-eliminate/{slug}', [CategoryController::class, 'eliminate']);
         Route::get('category-deleted', [CategoryController::class, 'deleteCategory']);
         Route::get('category-restore/{slug}', [CategoryController::class, 'restore']);
+
+        Route::get('departements', [DepartementController::class, 'depart']);
+        Route::get('depart-add', [DepartementController::class, 'add']);
+        Route::post('depart-add', [DepartementController::class, 'store']);
+        Route::get('depart-edit/{slug}', [DepartementController::class, 'edit']);
+        Route::put('depart-edit/{slug}', [DepartementController::class, 'update']);
+        Route::get('depart-delete/{slug}', [DepartementController::class, 'delete']);
+        Route::get('depart-eliminate/{slug}', [DepartementController::class, 'eliminate']);
+        Route::get('depart-deleted', [DepartementController::class, 'deletedDepart']);
+        Route::get('depart-restore/{slug}', [DepartementController::class, 'restore']);
 
 
         Route::get('users', [UserController::class, 'users']);
