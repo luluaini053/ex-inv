@@ -61,7 +61,7 @@ class InvRentController extends Controller
             //$inv->stock--;
             $inv->stock -= $request->stock;
 
-            // Update the status based on the remaining stock
+            // Update the status based on the remaining stock dan menghilangkan barang dari diplay
             if ($inv->stock <= 0) {
                 $inv->status = 'not available';
                 $inv->stock = 0;

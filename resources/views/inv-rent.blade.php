@@ -20,17 +20,13 @@
         <form action="inv-rent" method="post">
             @csrf
             <div class="mb-3">
-                <label for="divisi" class="form-label">Division</label>
-                <select name="" id="divisi" class="form-control inputinv">
+                <label for="user" class="form-label">user | Division</label>
+                <select name="" id="user_id" class="form-control inputinv">
                     <option value="">Select User</option>
                     @foreach ($users as $item)
-                        <option value="{{$item->id}}">{{$item->divisi}}</option>
+                        <option value="{{$item->id}}">{{$item->username}}|{{$item->divisi}}</option>
                     @endforeach
                 </select>
-            </div>
-            <div class="mb-3">
-                <label for="user" class="form-label">User</label>
-                <input type="text" name="user" id="user" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="inv" class="form-label">Item</label>

@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-4">
-            <h1 class="mb-5">Receipt</h1>
+            <h1 class="mb-5">Daftar Barang</h1>
             <div class="my-5">
                 <table class="table">
                     <thead>
@@ -17,22 +17,58 @@
                             <th>Divisi</th>
                             <th>Name</th>
                             <th>Item</th>
-                            <th>Action</th>
+                            <th>Qty</th>
+                            <th>return qty</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $item)
+
                         <tr>
-                            <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->divisi}}</td>
-                            <td>{{ $item->username}} </td>
-                            <td>{{ $item->title}}</td>
-                            <td>
-                                <button type="submit" class="btn btn-success">Add</button>
+                            <td>IN-001</td>
+                            <td>KNITTING</td>
+                            <td>kenji</td>
+                            <td>mouse</td>
+                            <td>10</td>
+                            <td colspan="4">
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <input type="number" class="form-control" id="qty" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2">Add</button>
                             </td>
+
+                        </tr>
+                        <tr>
+                            <td>IN-002</td>
+                            <td>garmen</td>
+                            <td>kara</td>
+                            <td>cpu</td>
+                            <td>3</td>
+                            <td colspan="4">
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <input type="number" class="form-control" id="qty" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2">Add</button>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>IN-003</td>
+                            <td>hunter</td>
+                            <td>shin</td>
+                            <td>router</td>
+                            <td>9</td>
+                            <td colspan="4">
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <input type="number" class="form-control" id="qty" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2">Add</button>
+                            </td>
+
+
                         </tr>
 
-                        @endforeach
+
                     </tbody>
                 </table>
 
@@ -52,7 +88,7 @@
                 <form action="inv-return" method="post">
                     @csrf
                     <div class="mb-3">
-                        <label for="user" class="form-label">User | Division</label>
+                        <label for="user" class="form-label">Division</label>
                         <select name="user_id" id="user" class="form-control inputinv">
                             <option value="">Select User</option>
                             @foreach ($users as $item)
@@ -61,13 +97,8 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="inv" class="form-label">Item</label>
-                        <select name="inv_id" id="inv" class="form-control inputinv">
-                            <option value="">Select Item</option>
-                            @foreach ($inv as $item)
-                                <option value="{{$item->id}}">{{$item->inv_code}} {{$item->title}}</option>
-                            @endforeach
-                        </select>
+                        <label for="user" class="form-label">User</label>
+                        <input type="text" name="user" id="user" class="form-control">
                     </div>
 
                     <div class="mb-3">
