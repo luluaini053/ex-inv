@@ -51,7 +51,7 @@ class InvRentController extends Controller
                 'depart_id' => $user->depart_id,
                 'stock' => $request->stock,
                 'inv_date' => Carbon::now()->toDateString(),
-                'return_date' => Carbon::now()->addDay(3)->toDateString(),
+                'return_date' => Carbon::now()->addDay(7)->toDateString(),
             ];
 
             // Create a new record in the inv_logs table

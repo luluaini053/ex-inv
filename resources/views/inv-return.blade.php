@@ -28,7 +28,7 @@
                                 @foreach ($invs as $inv)
                                     <tr>
                                         <td>{{ $inv->inv->inv_code  }}</td>
-                                        <td>{{ $inv->depart->depart }}</td>
+                                        <td>{{ $inv->depart ? $inv->depart->depart : 'N/A' }}</td>
                                         <td>NAMA PEMINJAM</td>
                                         <td>{{ $inv->inv->title  }}</td>
                                         <td>{{ $inv->stock  }}</td>
@@ -53,13 +53,12 @@
                         </div>
                         @endif
                     </div>
-
                             <div class="mb-3">
-                                <label for="depart" class="form-label">Division</label>
-                                <select name="" id="depart_id" class="form-control inputinv">
+                                <label for="depart_id" class="form-label">Division</label>
+                                <select name="depart_id" id="depart_id" class="form-control inputinv">
                                     <option value="">Select depart</option>
-                                    @foreach ($users as $item)
-                                        <option value="{{$item->id}}">{{$item->inv->depart}}</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->depart_id }}">{{ $user->depart }}</option>
                                     @endforeach
                                 </select>
                             </div>
