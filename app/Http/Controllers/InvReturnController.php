@@ -9,13 +9,16 @@ use App\Models\InvLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class InvReturnController extends Controller
 {
-    public function return(){
+    public function return(Request $request){
         $users = User::where('id', '!=', '1')->where('status', '!=', 'inactive')->get();
-        $inv = Inv::all();
-        return view('inv-return', ['users' => $users, 'inv' =>$inv]);
+        $invLogs = InvLogs::with(['inv','depart'])->where('actual_return_date', null)->get();
+        // InvLogs::with(['user', 'inv'])
+        // dd($invLogs[0]);
+        return view('inv-return', ['users' => $users, 'invs' => $invLogs]);
     }
 
     public function heal(Request $request){
@@ -25,10 +28,12 @@ class InvReturnController extends Controller
             DB::beginTransaction();
 
             // Mencari catatan peminjaman yang sesuai
-            $invLog = InvLogs::where('user_id', $request->user_id)
+            foreach ($invlog as $item) {
+                InvLogs::where('user_id', $request->user_id)
                 ->where('actual_return_date', null)
                 ->where('inv_id', $request->inv_id)
                 ->first();
+            }
 
             if (!$invLog) {
                 Session::flash('message', 'Process error.');

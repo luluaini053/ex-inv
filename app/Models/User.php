@@ -26,7 +26,7 @@ class User extends Authenticatable
         'username',
         'password',
         'divisi',
-
+        'depart_id',
     ];
 
     /**

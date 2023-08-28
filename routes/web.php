@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
         Route::get('category-deleted', [CategoryController::class, 'deleteCategory']);
         Route::get('category-restore/{slug}', [CategoryController::class, 'restore']);
 
-        Route::get('departements', [DepartementController::class, 'depart']);
+        Route::get('departement', [DepartementController::class, 'depart']);
         Route::get('depart-add', [DepartementController::class, 'add']);
         Route::post('depart-add', [DepartementController::class, 'store']);
         Route::get('depart-edit/{slug}', [DepartementController::class, 'edit']);

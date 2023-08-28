@@ -19,7 +19,7 @@ class PublicController extends Controller
                         ->get();
 
         }else{
-            $invs = Inv::all();
+            $invs = Inv::all()->where('status', 'in stock');
         }
         return view('inventory-list', ['invs' => $invs, 'cate' => $cate]);
     }

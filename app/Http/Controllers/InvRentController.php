@@ -9,6 +9,7 @@ use App\Models\InvLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class InvRentController extends Controller
 {
@@ -21,7 +22,7 @@ class InvRentController extends Controller
     public function store(Request $request){
         $rules = [
             'inv_id' => 'required', // Add appropriate validation rules for inv_id
-            'user_id' => 'required', // Add appropriate validation rules for user_id
+            'stock' => 'required', // Add appropriate validation rules for stock
         ];
 
         $this->validate($request, $rules);
@@ -42,13 +43,12 @@ class InvRentController extends Controller
                 return redirect('inv-rent');
             }
 
-            $count = InvLogs::where('user_id', $request->user_id)
-                ->whereNull('actual_return_date')
-                ->count();
+            $user = User::find(Auth::user()->id);
 
             $invLogData = [
                 'inv_id' => $request->inv_id,
-                'user_id' => $request->user_id,
+                'user_id' => $user->id,
+                'depart_id' => $user->depart_id,
                 'stock' => $request->stock,
                 'inv_date' => Carbon::now()->toDateString(),
                 'return_date' => Carbon::now()->addDay(3)->toDateString(),
@@ -58,7 +58,6 @@ class InvRentController extends Controller
             InvLogs::create($invLogData);
 
             // Decrease the stock of the item
-            //$inv->stock--;
             $inv->stock -= $request->stock;
 
             // Update the status based on the remaining stock dan menghilangkan barang dari diplay
@@ -66,9 +65,7 @@ class InvRentController extends Controller
                 $inv->status = 'not available';
                 $inv->stock = 0;
             }
-
             $inv->save();
-
             DB::commit();
 
             Session::flash('message', 'Rent Item Success');

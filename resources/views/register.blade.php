@@ -48,8 +48,11 @@
                 </div>
                 <div>
                     <label for="divisi" class="form-label">Division</label>
-                    <input type="text" name="divisi" id="divisi" class="form-control" style="text-transform: uppercase">
-                </div>
+                    <select name="divisi">
+                    @foreach ($depts as $dept)
+                        <option value="{{ $dept->id }}">{{ $dept->depart }}</option>
+                    @endforeach
+                    </select>
                 <div>
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control">

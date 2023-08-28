@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Depart;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('register');
+        $departements = Depart::all();
+        return view('register',["depts" => $departements]);
     }
 
     public function authenticating(Request $request)
@@ -65,15 +67,22 @@ class AuthController extends Controller
     }
 
     public function registerProcess(Request $request){
+        // dd($request);
         $validate = $request->validate([
             'username' => 'required|unique:users|max:255',
             'password' => 'required|max:255',
-            'divisi' => 'required|max:255',
+            'divisi' => 'required',
         ]);
 
-        $request['password'] = Hash::make($request->password);
-        $user = User::create($request->all());
-        $request['divisi'] = Str::upper($request->divisi);
+        $registerData = [
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'depart_id' => $request->divisi,
+            'divisi' => "DEFAULT_DIVISI",
+        ];
+
+        $user = User::create($registerData);
+        // $request['divisi'] = Str::upper($request->divisi);
         //$divisi = strtoupper($divisi);
         //if (strtoupper($divisi) !== $divisi) {
         //    $fail('validation.uppercase')->translate();

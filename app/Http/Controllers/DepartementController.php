@@ -18,7 +18,7 @@ class DepartementController extends Controller
 
     public function store(Request $request){
         $validated = $request->validate([
-            'depart' => 'required|unique:categories|max:100',
+            'depart' => 'required|unique:departs|max:100',
         ]);
 
         $departStore = Depart::create($request->all());
@@ -33,7 +33,7 @@ class DepartementController extends Controller
 
     public function update(Request $request, $slug){
         $validated = $request->validate([
-            'depart' => 'required|unique:categories|max:100',
+            'depart' => 'required|unique:departs|max:100',
         ]);
 
         $departo = Depart::where('slug', $slug)->first();
@@ -55,7 +55,7 @@ class DepartementController extends Controller
         return redirect('departement')->with('status', 'Delete Departement Success');
     }
 
-    public function deleteDepart(){
+    public function deletedDepart(){
         $deletedDepart = Depart::onlyTrashed()->get();
         return view('depart-deleted-list', ['deletedDepart' => $deletedDepart]);
     }

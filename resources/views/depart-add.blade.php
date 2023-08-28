@@ -16,7 +16,7 @@
                 </ul>
             </div>
         @endif
-        <form action="category-add" method="post">
+        <form action="depart-add" method="post">
             @csrf
             <div>
                 <label for="depart" class="form-label">Nama Departement</label>

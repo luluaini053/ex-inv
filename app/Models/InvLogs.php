@@ -14,7 +14,7 @@ class InvLogs extends Model
     protected $table = 'inv_logs';
 
     protected $fillable = [
-        'user_id', 'inv_id', 'inv_date', 'stock', 'return_date'
+        'user_id', 'inv_id', 'depart_id', 'inv_date', 'stock', 'return_date'
     ];
 
     /**
@@ -35,5 +35,15 @@ class InvLogs extends Model
     public function inv(): BelongsTo
     {
         return $this->belongsTo(Inv::class, 'inv_id', 'id');
+    }
+
+    /**
+     * Get the user that owns the InvLogs
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function depart(): BelongsTo
+    {
+        return $this->belongsTo(Depart::class, 'depart_id', 'id');
     }
 }
