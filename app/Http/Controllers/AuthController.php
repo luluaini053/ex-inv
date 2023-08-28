@@ -77,8 +77,7 @@ class AuthController extends Controller
         $registerData = [
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'depart_id' => $request->divisi,
-            'divisi' => "DEFAULT_DIVISI",
+            'depart_id' => $request->depart,
         ];
 
         $user = User::create($registerData);

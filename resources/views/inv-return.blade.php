@@ -43,22 +43,22 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-8">
-                    <div class="col-12 col-md-8 col-md offset-md-2 col-lg-6 offset-md-3">
-                        <h1 class="mb-5">Pengembalian Barang</h1>
-                    <div class="mt-5">
-                        @if (session('message'))
-                        <div class="alert {{session('alert-class')}}">
-                            {{ session('message') }}
-                        </div>
-                        @endif
-                    </div>
+                        <div class="col-8">
+                            <div class="col-12 col-md-8 col-md offset-md-2 col-lg-6 offset-md-3">
+                                <h1 class="mb-5">Pengembalian Barang</h1>
+                            <div class="mt-5">
+                                @if (session('message'))
+                                <div class="alert {{session('alert-class')}}">
+                                    {{ session('message') }}
+                                </div>
+                                @endif
+                            </div>
                             <div class="mb-3">
-                                <label for="depart_id" class="form-label">Division</label>
-                                <select name="depart_id" id="depart_id" class="form-control inputinv">
+                                <label for="depart" class="form-label">Division</label>
+                                <select name="departs[]" id="depart" class="form-control inputinv">
                                     <option value="">Select depart</option>
-                                    @foreach ($users as $user)
-                                        <option value="{{ $user->depart_id }}">{{ $user->depart }}</option>
+                                    @foreach ($depart as $item)
+                                        <option value="{{$item->id}}">{{$item->depart}}</option>
                                     @endforeach
                                 </select>
                             </div>

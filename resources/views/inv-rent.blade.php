@@ -21,13 +21,14 @@
             @csrf
             <div class="mb-3">
                 <label for="depart" class="form-label">Division</label>
-                <select name="" id="depart_id" class="form-control inputinv">
+                <select name="departs[]" id="depart" class="form-control inputinv">
                     <option value="">Select depart</option>
-                    @foreach ($users as $item)
+                    @foreach ($depart as $item)
                         <option value="{{$item->id}}">{{$item->depart}}</option>
                     @endforeach
                 </select>
             </div>
+
             <div class="mb-3">
                 <label for="user" class="form-label">User</label>
                 <input type="text" name="user" id="user" class="form-control">

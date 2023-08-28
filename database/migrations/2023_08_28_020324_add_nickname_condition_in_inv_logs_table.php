@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('inv_logs', function (Blueprint $table) {
-            $table->text('nickname');
+            $table->text('nickname')->after('user_id');
             $table->text('condition');
         });
     }

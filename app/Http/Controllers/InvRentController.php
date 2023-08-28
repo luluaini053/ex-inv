@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Inv;
 use App\Models\User;
+use App\Models\Depart;
 use App\Models\InvLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class InvRentController extends Controller
 {
     public function index(){
         $users = User::where('id', '!=', '1')->where('status', '!=', 'inactive')->get();
         $inv = Inv::all();
-        return  view('inv-rent', ['users' => $users, 'inv' => $inv]);
+        $depart = Depart::all();
+        return  view('inv-rent', ['users' => $users, 'inv' => $inv, 'depart' => $depart]);
     }
 
     public function store(Request $request){

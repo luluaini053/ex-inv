@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('inv_logs', function (Blueprint $table) {
-            $table->unsignedBigInteger('depart_id')->nullable(false);
+        Schema::create('user_departs', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('depart_id');
             $table->foreign('depart_id')->references('id')->on('departs');
+            $table->timestamps();
         });
     }
 
@@ -26,9 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('inv_logs', function (Blueprint $table) {
-            $table->dropForeign('inv_logs_depart_id_foreign');
-            $table->dropColumn('depart_id');
-        });
+        Schema::dropIfExists('user_departs');
     }
 };

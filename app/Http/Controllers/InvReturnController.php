@@ -5,20 +5,22 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Inv;
 use App\Models\User;
+use App\Models\Depart;
 use App\Models\InvLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class InvReturnController extends Controller
 {
     public function return(Request $request){
         $users = User::where('id', '!=', '1')->where('status', '!=', 'inactive')->get();
         $invLogs = InvLogs::with(['inv','depart'])->where('actual_return_date', null)->get();
+        $depart = Depart::all();
         // InvLogs::with(['user', 'inv'])
         // dd($invLogs[0]);
-        return view('inv-return', ['users' => $users, 'invs' => $invLogs]);
+        return view('inv-return', ['users' => $users, 'invs' => $invLogs, 'depart' => $depart]);
     }
 
     public function heal(Request $request){
@@ -28,7 +30,7 @@ class InvReturnController extends Controller
             DB::beginTransaction();
 
             // Mencari catatan peminjaman yang sesuai
-            foreach ($invlog as $item) {
+            foreach ($invlog as $invlogs) {
                 InvLogs::where('user_id', $request->user_id)
                 ->where('actual_return_date', null)
                 ->where('inv_id', $request->inv_id)

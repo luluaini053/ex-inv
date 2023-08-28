@@ -21,6 +21,7 @@ class DepartementController extends Controller
             'depart' => 'required|unique:departs|max:100',
         ]);
 
+
         $departStore = Depart::create($request->all());
         return redirect('departement')->with('status', 'Add Departement Success');
 

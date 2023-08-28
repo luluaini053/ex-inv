@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{ $loop->iteration}}</td>
                         <td>{{ $item->username}}</td>
-                        <td>{{ $item->divisi}}</td>
+                        <td>{{ $item->user_departs}}</td>
                     <td>
                         <a href="/user-detail/{{$item->slug}}">Detail</a>
                     </td>

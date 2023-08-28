@@ -4,6 +4,7 @@
             <tr>
                 <th>No.</th>
                 <th>User</th>
+                <th>Peminjam</th>
                 <th>Division</th>
                 <th>Item</th>
                 <th>Qty</th>
@@ -19,14 +20,19 @@
             <tr class="{{ $item->actual_return_date == null ? '' : ($item->return_date < $item->actual_return_date ? 'text-bg-danger'  : 'text-bg-success') }}">
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->user->username ?? 'None'}}</td>
-                <td>{{$item->inv->depart}}</td>
+                <td>{{$item->nickname}}</td>
+                <td>
+                    @foreach ($item->departs as $depart)
+                        {{$depart->depart}}
+                    @endforeach
+                </td>
                 <td>{{$item->inv->title}}</td>
                 <td>{{$item->stock}}</td>
                 <td>{{$item->inv_date}}</td>
                 <td>{{$item->return_date}}</td>
                 <td>{{$item->actual_return_date}}</td>
                 <td>{{$item->title}}</td>
-                <td>kondisi</td>
+                <td>{{$item->condition}}</td>
             </tr>
 
             @endforeach

@@ -25,8 +25,8 @@ class UserController extends Controller
 
     public function registeredUser(){
         $registeredUser = User::where('status', 'inactive')->where('role_id', 2)->get();
-        $divisi = Str::upper('divisi');
-        return view('registered-user', ['registeredUsers' => $registeredUser, 'divisi' => $divisi]);
+        $depart = Str::upper('user_departs');
+        return view('registered-user', ['registeredUsers' => $registeredUser, 'user_departs' => $depart]);
     }
 
     public function show($slug){
