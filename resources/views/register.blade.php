@@ -47,8 +47,8 @@
                     <input type="text" name="username" id="username" class="form-control">
                 </div>
                 <div>
-                    <label for="divisi" class="form-label">Division</label>
-                    <select name="divisi">
+                    <label for="depart" class="form-label">Division</label>
+                    <select name="depart">
                     @foreach ($depts as $dept)
                         <option value="{{ $dept->id }}">{{ $dept->depart }}</option>
                     @endforeach

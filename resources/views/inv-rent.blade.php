@@ -20,7 +20,7 @@
 
         <form action="inv-rent" method="post">
             @csrf
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="depart" class="form-label">Division</label>
                 <select name="departs[]" id="depart" class="form-control inputinv">
                     <option value="">Select depart</option>
@@ -28,11 +28,11 @@
                         <option value="{{$item->id}}">{{$item->depart}}</option>
                     @endforeach
                 </select>
-            </div>
+            </div> --}}
 
             <div class="mb-3">
                 <label for="nickname" class="form-label">Peminjam</label>
-                <input type="text" name="nickname" id="nickname" value="nickname" class="form-control">
+                <input type="text" name="nickname" id="nickname" class="form-control" placeholder="nickname">
             </div>
             <div class="mb-3">
                 <label for="inv" class="form-label">Item</label>

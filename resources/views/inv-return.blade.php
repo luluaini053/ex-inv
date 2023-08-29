@@ -53,7 +53,7 @@
                                 </div>
                                 @endif
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="depart" class="form-label">Division</label>
                                 <select name="departs[]" id="depart" class="form-control inputinv">
                                     <option value="">Select depart</option>
@@ -61,10 +61,10 @@
                                         <option value="{{$item->id}}">{{$item->depart}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="mb-3">
                                 <label for="user" class="form-label">Pengembali</label>
-                                <input type="text" name="user" id="user" class="form-control">
+                                <input type="text" name="nickname" id="nickname" class="form-control">
                             </div>
                             {{-- <div class="mb-3">
                                 <label for="stock" class="form-label">Qty</label>
@@ -72,7 +72,7 @@
                             </div> --}}
                             <div class="mb-3">
                                 <label for="user" class="form-label">Keterangan barang</label>
-                                <input type="text" name="user" id="user" class="form-control">
+                                <input type="text" name="condition" id="condition" class="form-control">
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary w-100">Return Item</button>

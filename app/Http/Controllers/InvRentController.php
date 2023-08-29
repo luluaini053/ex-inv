@@ -17,8 +17,7 @@ class InvRentController extends Controller
     public function index(){
         $users = User::where('id', '!=', '1')->where('status', '!=', 'inactive')->get();
         $inv = Inv::all();
-        $depart = Depart::all();
-        return  view('inv-rent', ['users' => $users, 'inv' => $inv, 'depart' => $depart]);
+        return  view('inv-rent', ['users' => $users, 'inv' => $inv]);
     }
 
     public function store(Request $request){

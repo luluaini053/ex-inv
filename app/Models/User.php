@@ -7,6 +7,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -25,7 +26,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
-        'depart',
+        'depart_id',
     ];
 
     /**
@@ -58,6 +59,15 @@ class User extends Authenticatable
                 'source' => 'username'
             ]
         ];
+    }
+    /**
+     * Get the depart where user belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function depart(): BelongsTo
+    {
+        return $this->belongsTo(Depart::class, 'depart_id', 'id');
     }
 }
 

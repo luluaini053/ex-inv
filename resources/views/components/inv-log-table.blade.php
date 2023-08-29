@@ -11,7 +11,6 @@
                 <th>Rent Date</th>
                 <th>Return Date</th>
                 <th>Actual Return Date</th>
-                <th>Return Qty</th>
                 <th>Keterangan barang</th>
             </tr>
         </thead>
@@ -27,7 +26,6 @@
                 <td>{{$item->inv_date}}</td>
                 <td>{{$item->return_date}}</td>
                 <td>{{$item->actual_return_date}}</td>
-                <td>{{$item->title}}</td>
                 <td>{{$item->condition}}</td>
             </tr>
 
