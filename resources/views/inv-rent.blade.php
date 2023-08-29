@@ -9,6 +9,7 @@
     <div class="col-12 col-md-8 col-md offset-md-2 col-lg-6 offset-md-3">
         <h1 class="mb-5">Peminjaman Barang</h1>
 
+
         <div class="mt-5">
             @if (session('message'))
             <div class="alert {{session('alert-class')}}">
@@ -30,8 +31,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="user" class="form-label">User</label>
-                <input type="text" name="user" id="user" class="form-control">
+                <label for="nickname" class="form-label">Peminjam</label>
+                <input type="text" name="nickname" id="nickname" value="nickname" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="inv" class="form-label">Item</label>
@@ -45,6 +46,10 @@
             <div class="mb-3">
                 <label for="stock" class="form-label">Qty</label>
                 <input type="number" name="stock" id="stock" class="form-control" min='0' placeholder={{$item->stock}}>
+            </div>
+            <div class="mb-3">
+                <label for="condition" class="form-label">Keterangan barang</label>
+                <input type="text" name="condition" id="condition" class="form-control">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary w-100">Rent</button>

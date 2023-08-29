@@ -14,7 +14,7 @@ class InvLogs extends Model
     protected $table = 'inv_logs';
 
     protected $fillable = [
-        'user_id', 'inv_id', 'depart_id', 'inv_date', 'stock', 'return_date'
+        'user_id', 'inv_id', 'depart_id', 'inv_date', 'stock', 'return_date', 'nickname', 'condition', 'depart'
     ];
 
     /**

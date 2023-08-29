@@ -25,6 +25,8 @@ class InvRentController extends Controller
         $rules = [
             'inv_id' => 'required', // Add appropriate validation rules for inv_id
             'stock' => 'required', // Add appropriate validation rules for stock
+            'nickname' => 'required',
+            'condition' => 'required',
         ];
 
         $this->validate($request, $rules);
@@ -49,11 +51,14 @@ class InvRentController extends Controller
 
             $invLogData = [
                 'inv_id' => $request->inv_id,
+                'title' => $request->title,
                 'user_id' => $user->id,
+                'nickname' => $request->nickname,
                 'depart_id' => $user->depart_id,
                 'stock' => $request->stock,
                 'inv_date' => Carbon::now()->toDateString(),
-                'return_date' => Carbon::now()->addDay(7)->toDateString(),
+                'return_date' => Carbon::now()->addDay(3)->toDateString(),
+                'condition' => $request->condition,
             ];
 
             // Create a new record in the inv_logs table
@@ -73,7 +78,9 @@ class InvRentController extends Controller
             Session::flash('message', 'Rent Item Success');
             Session::flash('alert-class', 'alert-success');
             return redirect('inv-rent');
+
         } catch (\Throwable $th) {
+
             DB::rollBack();
         }
     }

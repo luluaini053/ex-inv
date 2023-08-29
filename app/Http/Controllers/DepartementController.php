@@ -66,4 +66,10 @@ class DepartementController extends Controller
         $depart->restore();
         return redirect('departement')->with('status', 'Restore Departement Success');
     }
+
+
+
+
+
 }
+

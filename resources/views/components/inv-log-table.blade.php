@@ -12,7 +12,7 @@
                 <th>Return Date</th>
                 <th>Actual Return Date</th>
                 <th>Return Qty</th>
-                <th>Kondisi barang</th>
+                <th>Keterangan barang</th>
             </tr>
         </thead>
         <tbody>
@@ -21,11 +21,7 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->user->username ?? 'None'}}</td>
                 <td>{{$item->nickname}}</td>
-                <td>
-                    @foreach ($item->departs as $depart)
-                        {{$depart->depart}}
-                    @endforeach
-                </td>
+                <td>{{$item->depart_id}} </td>
                 <td>{{$item->inv->title}}</td>
                 <td>{{$item->stock}}</td>
                 <td>{{$item->inv_date}}</td>

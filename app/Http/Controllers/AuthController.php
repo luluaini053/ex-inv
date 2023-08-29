@@ -73,11 +73,11 @@ class AuthController extends Controller
             'password' => 'required|max:255',
             'divisi' => 'required',
         ]);
-
+        dd($request);
         $registerData = [
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'depart_id' => $request->depart,
+            'depart_id' => $request->user_departs,
         ];
 
         $user = User::create($registerData);

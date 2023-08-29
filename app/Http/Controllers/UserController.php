@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Depart;
 use App\Models\InvLogs;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class UserController extends Controller
     public function users(Request $request)
     {
         $users = User::where('role_id', 2)->where('status', 'active')->get();
-        return view('user', ['users' => $users]);
+        $depart = Depart::all();
+        return view('user', ['users' => $users, 'depart' => $depart]);
     }
 
 

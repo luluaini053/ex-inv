@@ -29,7 +29,7 @@
                                     <tr>
                                         <td>{{ $inv->inv->inv_code  }}</td>
                                         <td>{{ $inv->depart ? $inv->depart->depart : 'N/A' }}</td>
-                                        <td>NAMA PEMINJAM</td>
+                                        <td>{{ $inv->nickname}}</td>
                                         <td>{{ $inv->inv->title  }}</td>
                                         <td>{{ $inv->stock  }}</td>
                                         <td colspan="2">
@@ -63,7 +63,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="user" class="form-label">User</label>
+                                <label for="user" class="form-label">Pengembali</label>
                                 <input type="text" name="user" id="user" class="form-control">
                             </div>
                             {{-- <div class="mb-3">
@@ -71,7 +71,7 @@
                                 <input type="number" id="stock" name="stock" class="form-control" min='0'/>
                             </div> --}}
                             <div class="mb-3">
-                                <label for="user" class="form-label">Kondisi barang</label>
+                                <label for="user" class="form-label">Keterangan barang</label>
                                 <input type="text" name="user" id="user" class="form-control">
                             </div>
                             <div>
