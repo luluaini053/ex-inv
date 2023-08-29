@@ -20,13 +20,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($registeredUsers as $item)
+                @foreach ($registeredUsers as $user)
                     <tr>
                         <td>{{ $loop->iteration}}</td>
-                        <td>{{ $item->username}}</td>
-                        <td>{{ $item->user_departs}}</td>
+                        <td>{{ $user->username}}</td>
+                        <td>{{ $user->depart->depart}}</td>
                     <td>
-                        <a href="/user-detail/{{$item->slug}}">Detail</a>
+                        <a href="/user-detail/{{$user->slug}}">Detail</a>
                     </td>
                     </tr>
                 @endforeach
