@@ -64,7 +64,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="user" class="form-label">Pengembali</label>
-                                <input type="text" name="user" id="user" class="form-control">
+                                <input type="text" name="nickname" id="user" class="form-control">
                             </div>
                             {{-- <div class="mb-3">
                                 <label for="stock" class="form-label">Qty</label>
@@ -72,7 +72,7 @@
                             </div> --}}
                             <div class="mb-3">
                                 <label for="user" class="form-label">Keterangan barang</label>
-                                <input type="text" name="user" id="user" class="form-control">
+                                <input type="text" name="condition" id="condition" class="form-control">
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary w-100">Return Item</button>
