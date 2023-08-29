@@ -21,7 +21,7 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->user->username ?? 'None'}}</td>
                 <td>{{$item->nickname}}</td>
-                <td>{{$item->depart_id}} </td>
+                <td>{{$item->depart->depart}} </td>
                 <td>{{$item->inv->title}}</td>
                 <td>{{$item->stock}}</td>
                 <td>{{$item->inv_date}}</td>

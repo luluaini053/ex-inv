@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ $loop->iteration}}</td>
                     <td>{{ $item->username}}</td>
-                    <td>{{ $item->depart}} </td>
+                    <td>{{ $item->depart->depart}} </td>
                     <td>
                         <a href="/user-detail/{{$item->slug}}">Detail</a>
                         <a href="/user-banned/{{$item->slug}}">Ban User</a>

@@ -24,86 +24,86 @@ public function return(Request $request){
 }
 
 public function heal(Request $request){
-    //$request['actual_return_date'] = Carbon::now()->toDateString(); // Tanggal aktual pengembalian
+    $request['actual_return_date'] = Carbon::now()->toDateString(); // Tanggal aktual pengembalian
 
-    //try {
-    //    DB::beginTransaction();
+    try {
+        DB::beginTransaction();
 
-    //    // Mencari catatan peminjaman yang sesuai
-    //    foreach ($invlog as $invlogs) {
-    //        InvLogs::where('user_id', $request->user_id)
-    //        ->where('actual_return_date', null)
-    //        ->where('inv_id', $request->inv_id)
-    //        ->first();
-    //    }
-
-    //    if (!$invLog) {
-    //        Session::flash('message', 'Process error.');
-    //        Session::flash('alert-class', 'alert-danger');
-    //        return redirect('inv-return');
-    //    }
-
-    //    // Mengatur tanggal aktual pengembalian
-    //    $invLog->actual_return_date = $request->actual_return_date;
-    //    $invLog->save();
-
-    //    // Memperbarui status inventaris menjadi 'in stock'
-    //    $inv = Inv::findOrFail($request->inv_id);
-    //    $inv->status = 'in stock';
-    //    $inv->stock += $request->stock; //tambah kembali jumah stock yg dipinjam
-
-    //    $inv->save();
-
-    //    DB::commit();
-
-    //    Session::flash('message', 'Item returned successfully.');
-    //    Session::flash('alert-class', 'alert-success');
-    //    return redirect('inv-return');
-
-    //} catch (\Throwable $th) {
-    //    dd($th->getMessage());
-    //    DB::rollBack();
-    //}
-
-        $request['actual_return_date'] = Carbon::now()->toDateString(); // Tanggal aktual pengembalian
-
-        try {
-            DB::beginTransaction();
-
-            // Mencari catatan peminjaman yang sesuai
-            $invLogs = InvLogs::where('user_id', $request->user_id)
-                ->whereNull('actual_return_date')
-                ->where('inv_id', $request->inv_id)
-                ->get();
-
-            if ($invLogs->isEmpty()) {
-                Session::flash('message', 'No matching rental records found.');
-                Session::flash('alert-class', 'alert-danger');
-                return redirect('inv-return');
-            }
-
-            // Memperbarui tanggal aktual pengembalian pada semua catatan peminjaman yang sesuai
-            foreach ($invLogs as $invLog) {
-                $invLog->actual_return_date = $request->actual_return_date;
-                $invLog->save();
-            }
-
-            // Memperbarui status inventaris menjadi 'in stock' dan menambahkan kembali jumlah yang dikembalikan
-            $inv = Inv::findOrFail($request->inv_id);
-            $inv->status = 'in stock';
-            $inv->stock += $request->stock; // Menambahkan kembali jumlah stok yang dikembalikan
-            $inv->save();
-
-            DB::commit();
-
-            Session::flash('message', 'Items returned successfully.');
-            Session::flash('alert-class', 'alert-success');
-            return redirect('inv-return');
-
-        } catch (\Throwable $th) {
-            dd($th->getMessage());
-            DB::rollBack();
+        // Mencari catatan peminjaman yang sesuai
+        foreach ($invlog as $invlogs) {
+            InvLogs::where('user_id', $request->user_id)
+            ->where('actual_return_date', null)
+            ->where('inv_id', $request->inv_id)
+            ->first();
         }
+
+        if (!$invLog) {
+            Session::flash('message', 'Process error.');
+            Session::flash('alert-class', 'alert-danger');
+            return redirect('inv-return');
+        }
+
+        // Mengatur tanggal aktual pengembalian
+        $invLog->actual_return_date = $request->actual_return_date;
+        $invLog->save();
+
+        // Memperbarui status inventaris menjadi 'in stock'
+        $inv = Inv::findOrFail($request->inv_id);
+        $inv->status = 'in stock';
+        $inv->stock += $request->stock; //tambah kembali jumah stock yg dipinjam
+
+        $inv->save();
+
+        DB::commit();
+
+        Session::flash('message', 'Item returned successfully.');
+        Session::flash('alert-class', 'alert-success');
+        return redirect('inv-return');
+
+    } catch (\Throwable $th) {
+        dd($th->getMessage());
+        DB::rollBack();
+    }
+
+        //$request['actual_return_date'] = Carbon::now()->toDateString(); // Tanggal aktual pengembalian
+
+        //try {
+        //    DB::beginTransaction();
+
+        //    // Mencari catatan peminjaman yang sesuai
+        //    $invLogs = InvLogs::where('user_id', $request->user_id)
+        //        ->whereNull('actual_return_date')
+        //        ->where('inv_id', $request->inv_id)
+        //        ->get();
+
+        //    if ($invLogs->isEmpty()) {
+        //        Session::flash('message', 'No matching rental records found.');
+        //        Session::flash('alert-class', 'alert-danger');
+        //        return redirect('inv-return');
+        //    }
+
+        //    // Memperbarui tanggal aktual pengembalian pada semua catatan peminjaman yang sesuai
+        //    foreach ($invLogs as $invLog) {
+        //        $invLog->actual_return_date = $request->actual_return_date;
+        //        $invLog->save();
+        //    }
+
+        //    // Memperbarui status inventaris menjadi 'in stock' dan menambahkan kembali jumlah yang dikembalikan
+        //    $inv = Inv::findOrFail($request->inv_id);
+        //    $inv->status = 'in stock';
+        //    $inv->stock += $request->stock; // Menambahkan kembali jumlah stok yang dikembalikan
+        //    $inv->save();
+
+        //    DB::commit();
+
+        //    Session::flash('message', 'Items returned successfully.');
+        //    Session::flash('alert-class', 'alert-success');
+        //    return redirect('inv-return');
+
+        //} catch (\Throwable $th) {
+        //    dd($th->getMessage());
+        //    DB::rollBack();
+        //}
     }
 }
 
