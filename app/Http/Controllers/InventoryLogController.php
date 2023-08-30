@@ -14,4 +14,4 @@ class InventoryLogController extends Controller
     }
 }
 
-//masih kurang untuk menampilkan barang yang dikembalikan
+

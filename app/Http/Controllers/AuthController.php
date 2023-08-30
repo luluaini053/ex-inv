@@ -19,7 +19,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        $departements = Depart::all();
+        $departements = Depart::where('depart', '!=', 'IT')->get();
         return view('register',["depts" => $departements]);
     }
 
@@ -71,13 +71,13 @@ class AuthController extends Controller
         $validate = $request->validate([
             'username' => 'required|unique:users|max:255',
             'password' => 'required|max:255',
-            'divisi' => 'required',
+            'depart' => 'required',
         ]);
 
         $registerData = [
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'depart_id' => $request->divisi,
+            'depart_id' => $request->depart,
         ];
 
         $user = User::create($registerData);

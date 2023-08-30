@@ -60,17 +60,18 @@ class InvRentController extends Controller
                 'condition' => $request->condition,
             ];
 
-            // Create a new record in the inv_logs table
+            // buat racord baru di invlog
             InvLogs::create($invLogData);
 
-            // Decrease the stock of the item
+            // Mengurangi stock inv
             $inv->stock -= $request->stock;
 
-            // Update the status based on the remaining stock dan menghilangkan barang dari diplay
+            // update status barang
             if ($inv->stock <= 0) {
                 $inv->status = 'not available';
                 $inv->stock = 0;
             }
+            //simpan
             $inv->save();
             DB::commit();
 
@@ -81,6 +82,10 @@ class InvRentController extends Controller
         } catch (\Throwable $th) {
 
             DB::rollBack();
+
+            Session::flash('message', $th->getMessage());
+            Session::flash('alert-class', 'alert-danger');
+            return redirect('inv-rent');
         }
     }
 

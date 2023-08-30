@@ -92,10 +92,3 @@ public function heal(Request $request){
 }
 
 
-//status in stock blm bisa,
-
-//kirim inv_id dan user_id ke controller (dari route)
-//check status sekarang dari inv nya, kalau in stock -> tolak request (untuk apa dikembalikan, karena sedang ada barangnya)
-//ambil data dari inv_logs yang actual_return_date = null, berdasarkan inv_id dan user_id
-//kalau ada datanya, berarti dia sedang pinjam barangnya. isi actual_return_date dengan tanggal dan update status inv ke in stock
-//kalau tak ada, berarti dia sedang tak pinjam barang nya (dia pernah pinjam tapi sudah dikembalikan semua)

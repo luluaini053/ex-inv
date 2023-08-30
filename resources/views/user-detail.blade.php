@@ -27,7 +27,7 @@
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Division</label>
-            <input type="text" class="form-control" readonly value="{{$user->divisi}}">
+            <input type="text" class="form-control" readonly value="{{$user->depart->depart}}">
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Status</label>
